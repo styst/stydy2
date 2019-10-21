@@ -15,9 +15,11 @@ public class Student{
     @Column(name="`name`")
     private String name;
 
+    @Transient
     @Column(name="`age`")
     private int age;
 
+    @Transient
     @Column(name="`sex`")
     private int sex;
 

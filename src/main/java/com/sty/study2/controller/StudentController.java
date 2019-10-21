@@ -30,6 +30,6 @@ public class StudentController {
     }
     @GetMapping("get")
     public String getStudentOne() {
-        return studentService.test();
+        return studentService.test2();
     }
 }
