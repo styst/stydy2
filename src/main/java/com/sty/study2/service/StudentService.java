@@ -4,6 +4,7 @@ import com.sty.study2.StudentDao;
 import com.sty.study2.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -44,14 +45,16 @@ public class StudentService {
         Long count = studentRepository.countByName("赵丽颖");
         return count.toString();
     }
-    public Page<Student> test3(String name, Pageable pageable) {
+    public Page<Student> test3(PageRequest pageable) {
         return studentRepository.findAll((Specification<Student>) (root, criteriaQuery, criteriaBuilder) -> {
             List<Predicate> predicates = new LinkedList<>();
-            predicates.add(criteriaBuilder.gt(root.get("id"), 3));
+            criteriaQuery.orderBy(criteriaBuilder.desc(root.get("age")));
+            predicates.add(criteriaBuilder.gt(root.get("id"), 0));
             Predicate[] array = new Predicate[predicates.size()];
             return criteriaBuilder.and(predicates.toArray(array));
         }, pageable);
     }
+
 
 
 }

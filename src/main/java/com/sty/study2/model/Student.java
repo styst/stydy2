@@ -1,7 +1,6 @@
 package com.sty.study2.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "student")
@@ -15,7 +14,7 @@ public class Student{
     @Column(name="`name`")
     private String name;
 
-    @Transient
+
     @Column(name="`age`")
     private int age;
 
